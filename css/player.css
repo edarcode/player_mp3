@@ -1,0 +1,6 @@
+.player {
+  width: 320px;
+  background-color: var(--darkViolet);
+  border-radius: 5px;
+  overflow: hidden;
+}

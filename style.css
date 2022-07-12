@@ -1,0 +1,11 @@
+@import url("./css/colors.css");
+@import url("./css/reset.css");
+@import url("./css/fonts.css");
+@import url("./css/player.css");
+@import url("./css/controls.css");
+
+.app {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+}

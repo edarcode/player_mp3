@@ -1,0 +1,15 @@
+:root {
+  --white: aliceblue;
+  --black: hsl(0, 0%, 13%);
+  --softBlack: hsl(0, 0%, 18%);
+  --mediumBlack: hsl(0, 0%, 7%);
+  --fullBlack: hsl(0, 0%, 0%);
+  --blue: royalblue;
+  --violet: hsl(260, 50%, 35%);
+  --softViolet: slateblue;
+  --mediumViolet: hsl(255, 60%, 40%);
+  --orange: hsl(25, 100%, 50%);
+  --gray: gray;
+  --darkViolet: hsl(240, 20%, 17%);
+  --green: hsl(75, 85%, 50%);
+}

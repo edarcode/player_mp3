@@ -1,0 +1,23 @@
+.controls {
+  padding: 80px 15px;
+  display: grid;
+  gap: 40px;
+  place-items: center;
+}
+.controls audio {
+  background-color: royalblue;
+  border-radius: 0;
+}
+
+.controls__play {
+  display: flex;
+  gap: 15px;
+}
+.controls__header {
+  display: grid;
+  text-align: center;
+}
+.constrols__title {
+  font-size: 2.5rem;
+  color: var(--softViolet);
+}
