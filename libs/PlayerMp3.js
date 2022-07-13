@@ -1,37 +1,33 @@
 import { sings } from "../data/sings";
-import { replaceArtBox } from "../utils/replaceArtBox";
-import { replaceControlsBox } from "../utils/replaceControlsBox";
+import { replacePlayerMp3 } from "../utils/replacePlayerMp3";
 import { createArtBox } from "./ArtBox";
 import { createControlsBox } from "./ControlsBox";
 
-export const createPlayerMp3 = async () => {
+export const createPlayerMp3 = async (state) => {
   const PlayerMp3 = document.createElement("article");
   PlayerMp3.classList.add("player");
 
-  let index = 0;
   const lastIndexSings = sings.length - 1;
 
-  function handleNext() {
-    if (index === lastIndexSings) {
-      index = 0;
+  async function handleNext() {
+    if (state.index === lastIndexSings) {
+      state.reset();
     } else {
-      index++;
+      state.add();
     }
-    replaceArtBox({ index, lib: PlayerMp3 });
-    replaceControlsBox({ index, lib: PlayerMp3, handleBack, handleNext });
+    await replacePlayerMp3(state);
   }
 
-  function handleBack() {
-    if (index === 0) {
-      index = lastIndexSings;
+  async function handleBack() {
+    if (state.index === 0) {
+      state.set(lastIndexSings);
     } else {
-      index--;
+      state.subtract();
     }
-    replaceArtBox({ index, lib: PlayerMp3 });
-    replaceControlsBox({ index, lib: PlayerMp3, handleBack, handleNext });
+    await replacePlayerMp3(state);
   }
 
-  const { image, title, artist, audio } = sings[index];
+  const { image, title, artist, audio } = sings[state.index];
 
   const { ArtBox } = createArtBox({ img: image });
   const { ControlsBox } = await createControlsBox({
@@ -42,8 +38,11 @@ export const createPlayerMp3 = async () => {
     handleNext,
   });
 
-  PlayerMp3.appendChild(ArtBox);
-  PlayerMp3.appendChild(ControlsBox);
+  const fragment = document.createDocumentFragment();
+  fragment.appendChild(ArtBox);
+  fragment.appendChild(ControlsBox);
+
+  PlayerMp3.appendChild(fragment);
 
   return PlayerMp3;
 };

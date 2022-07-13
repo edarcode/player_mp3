@@ -24,7 +24,7 @@ export const createControlsBox = async ({
   const back = createImg({ img: "/svgs/back.svg", id: "back" });
   const next = createImg({ img: "/svgs/next.svg", id: "next" });
   const play = createImg({ img: "/svgs/play.svg", id: "play" });
-  const audio = await createAudio({ src: disco });
+  const audio = await createAudio({ src: disco, id: "audio" });
   const duration = createSpan({
     content: formatSeconds(audio.duration),
     className: "duration",
@@ -56,13 +56,12 @@ export const createControlsBox = async ({
   fragment.appendChild(currentTime);
 
   /* handlers -------------- handlers ---------------- handlers*/
-  back.addEventListener("click", () => {
-    handleBack();
-    audio.play();
+  back.addEventListener("click", async () => {
+    await handleBack();
   });
 
-  next.addEventListener("click", () => {
-    handleNext();
+  next.addEventListener("click", async () => {
+    await handleNext();
   });
 
   play.addEventListener("click", () => {
