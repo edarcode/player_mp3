@@ -7,5 +7,5 @@ export const createArtBox = ({ img }) => {
   const image = createImg({ img });
   ArtBox.appendChild(image);
 
-  return { ArtBox };
+  return ArtBox;
 };

@@ -3,6 +3,7 @@
   display: grid;
   gap: 40px;
   place-items: center;
+  position: relative;
 }
 .controls audio {
   background-color: royalblue;
@@ -20,4 +21,15 @@
 .constrols__title {
   font-size: 2.5rem;
   color: var(--softViolet);
+}
+.controls__duration,
+.controls__current-time {
+  position: absolute;
+  top: -30px;
+}
+.controls__current-time {
+  left: 10px;
+}
+.controls__duration {
+  right: 10px;
 }

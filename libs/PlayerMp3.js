@@ -29,8 +29,8 @@ export const createPlayerMp3 = async (state) => {
 
   const { image, title, artist, audio } = sings[state.index];
 
-  const { ArtBox } = createArtBox({ img: image });
-  const { ControlsBox } = await createControlsBox({
+  const ArtBox = createArtBox({ img: image });
+  const ControlsBox = await createControlsBox({
     title,
     artist,
     disco: audio,

@@ -27,11 +27,11 @@ export const createControlsBox = async ({
   const audio = await createAudio({ src: disco, id: "audio" });
   const duration = createSpan({
     content: formatSeconds(audio.duration),
-    className: "duration",
+    className: "controls__duration",
   });
   const currentTime = createSpan({
     content: formatSeconds(audio.currentTime),
-    className: "current-time",
+    className: "controls__current-time",
   });
 
   /* Fragmentando etiquetas--------------------------------------------- */
@@ -55,7 +55,7 @@ export const createControlsBox = async ({
   fragment.appendChild(duration);
   fragment.appendChild(currentTime);
 
-  /* handlers -------------- handlers ---------------- handlers*/
+  /* Listener -------------- Listener ---------------- Listener*/
   back.addEventListener("click", async () => {
     await handleBack();
   });
@@ -69,20 +69,20 @@ export const createControlsBox = async ({
       audio.pause();
       play.src = "/svgs/play.svg";
     } else {
-      playAudio();
+      audio.play().then(() => (play.src = "/svgs/pause.svg"));
     }
   });
+
   audio.addEventListener("ended", () => {
     play.src = "/svgs/play.svg";
   });
 
-  /* -------------métodos---------------------------------------- */
-  function playAudio() {
-    audio.play().then(() => (play.src = "/svgs/pause.svg"));
-  }
+  audio.addEventListener("timeupdate", () => {
+    currentTime.textContent = formatSeconds(audio.currentTime);
+  });
 
   /* -------------pusheando etiquetas al Componente------------- */
   ControlsBox.appendChild(fragment);
 
-  return { ControlsBox, playAudio };
+  return ControlsBox;
 };

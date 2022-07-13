@@ -20,4 +20,6 @@ state.set = (value) => {
   state.index = value;
 };
 
-createPlayerMp3(state).then((PlayerMp3) => app.appendChild(PlayerMp3));
+const startTheParty = async () => createPlayerMp3(state); /* 😎 */
+const PlayerMp3 = await startTheParty();
+app.appendChild(PlayerMp3);
