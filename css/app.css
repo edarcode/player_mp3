@@ -1,0 +1,11 @@
+.app {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  place-items: center;
+}
+@media screen and (min-width: 1280px) {
+  .app {
+    grid-template-columns: auto auto;
+  }
+}

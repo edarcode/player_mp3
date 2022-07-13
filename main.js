@@ -1,4 +1,5 @@
 import { createPlayerMp3 } from "./libs/PlayerMp3";
+import { createPlayList } from "./libs/PlayList";
 
 const app = document.querySelector("#app");
 
@@ -26,4 +27,12 @@ state.setIsCollapseMenu = () => {
 
 const startTheParty = async () => createPlayerMp3(state); /* 😎 */
 const PlayerMp3 = await startTheParty();
-app.appendChild(PlayerMp3);
+
+const PlayList = createPlayList(state);
+
+const fragment = document.createDocumentFragment();
+fragment.appendChild(PlayerMp3);
+fragment.appendChild(PlayList);
+
+app.appendChild(fragment);
+app.classList.add("app");

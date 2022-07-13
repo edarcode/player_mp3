@@ -18,30 +18,9 @@
 .player__menu:active {
   transform: scale(0.6);
 }
-.player__list {
-  position: absolute;
-  top: 50px;
-  left: 318px;
-  z-index: -1;
-  color: var(--gray);
-  background-color: var(--white);
-  box-shadow: 1px 1px 11px 2px var(--fullBlack);
-  min-width: 230px;
-  padding: 15px 20px 15px 27px;
-  transform: scale(0);
-  transition: transform 0.4s ease;
-}
-.player__list--collapse {
-  transform: scale(1);
-}
-.player__name-song {
-  list-style: none;
-}
+
 @media screen and (min-width: 1280px) {
   .player {
     width: 350px;
-  }
-  .player__list {
-    left: 348px;
   }
 }
