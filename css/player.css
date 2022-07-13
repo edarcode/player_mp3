@@ -12,6 +12,11 @@
   right: 8px;
   width: 45px;
   filter: invert(0.95);
+  transition: transform 0.1s ease;
+}
+
+.player__menu:active {
+  transform: scale(0.6);
 }
 .player__list {
   position: absolute;
@@ -24,7 +29,7 @@
   min-width: 230px;
   padding: 15px 20px 15px 27px;
   transform: scale(0);
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
 }
 .player__list--collapse {
   transform: scale(1);

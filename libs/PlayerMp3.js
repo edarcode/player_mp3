@@ -8,7 +8,6 @@ import { createPlayList } from "./PlayList";
 export const createPlayerMp3 = async (state) => {
   const PlayerMp3 = document.createElement("article");
   PlayerMp3.classList.add("player");
-  let isCollapseMenu = false;
 
   const lastIndexSings = sings.length - 1;
 
@@ -23,7 +22,7 @@ export const createPlayerMp3 = async (state) => {
 
   async function handleBack() {
     if (state.index === 0) {
-      state.set(lastIndexSings);
+      state.setIndex(lastIndexSings);
     } else {
       state.subtract();
     }
@@ -42,6 +41,7 @@ export const createPlayerMp3 = async (state) => {
   });
   const menu = createImg({ img: "/svgs/menu.svg", className: "player__menu" });
   const PlayList = createPlayList();
+  if (state.isCollapseMenu) PlayList.classList.add("player__list--collapse");
 
   const fragment = document.createDocumentFragment();
   fragment.appendChild(ArtBox);
@@ -52,6 +52,7 @@ export const createPlayerMp3 = async (state) => {
   PlayerMp3.appendChild(fragment);
 
   menu.addEventListener("click", () => {
+    state.setIsCollapseMenu();
     PlayList.classList.toggle("player__list--collapse");
   });
 
