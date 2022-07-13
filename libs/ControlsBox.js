@@ -4,44 +4,86 @@ import { createHeader } from "../utils/createHeader";
 import { createImg } from "../utils/createImg";
 import { createP } from "../utils/createP";
 import { createSpan } from "../utils/createSpan";
+import { formatSeconds } from "../utils/formatSeconds";
 
-export const createControlsBox = ({ title, artist, disco, handleNext }) => {
+export const createControlsBox = async ({
+  title,
+  artist,
+  disco,
+  handleBack,
+  handleNext,
+}) => {
+  const ControlsBox = document.createElement("div");
+  ControlsBox.classList.add("controls");
+
+  /* Creando etiquetas-------------------------------------------- */
   const p = createP({ content: title, className: "constrols__title" });
   const span = createSpan({ content: artist });
-  const audio = createAudio({ src: disco });
   const div = createDiv({ className: "controls__play" });
   const header = createHeader({ className: "controls__header" });
   const back = createImg({ img: "/svgs/back.svg", id: "back" });
   const next = createImg({ img: "/svgs/next.svg", id: "next" });
   const play = createImg({ img: "/svgs/play.svg", id: "play" });
+  const audio = await createAudio({ src: disco });
+  const duration = createSpan({
+    content: formatSeconds(audio.duration),
+    className: "duration",
+  });
+  const currentTime = createSpan({
+    content: formatSeconds(audio.currentTime),
+    className: "current-time",
+  });
 
+  /* Fragmentando etiquetas--------------------------------------------- */
+  const fragmentHeader = document.createDocumentFragment();
+  const fragmentBtnsAudio = document.createDocumentFragment();
   const fragment = document.createDocumentFragment();
-  const fragment2 = document.createDocumentFragment();
-  const fragment3 = document.createDocumentFragment();
 
+  fragmentHeader.appendChild(p);
+  fragmentHeader.appendChild(span);
+  header.appendChild(fragmentHeader);
+
+  fragmentBtnsAudio.appendChild(back);
+  fragmentBtnsAudio.appendChild(play);
+  fragmentBtnsAudio.appendChild(next);
+  div.appendChild(fragmentBtnsAudio);
+
+  /* Pusheando etiquetas al fragment principal */
   fragment.appendChild(audio);
-
-  fragment3.appendChild(p);
-  fragment3.appendChild(span);
-
-  header.appendChild(fragment3);
-
-  fragment2.appendChild(back);
-  fragment2.appendChild(play);
-  fragment2.appendChild(next);
-
-  div.appendChild(fragment2);
-
   fragment.appendChild(header);
   fragment.appendChild(div);
+  fragment.appendChild(duration);
+  fragment.appendChild(currentTime);
+
+  /* handlers -------------- handlers ---------------- handlers*/
+  back.addEventListener("click", () => {
+    handleBack();
+    audio.play();
+  });
 
   next.addEventListener("click", () => {
     handleNext();
   });
 
-  const ConstrolsBox = document.createElement("div");
-  ConstrolsBox.classList.add("controls");
-  ConstrolsBox.appendChild(fragment);
+  play.addEventListener("click", () => {
+    if (!audio.paused) {
+      audio.pause();
+      play.src = "/svgs/play.svg";
+    } else {
+      playAudio();
+    }
+  });
+  audio.addEventListener("ended", () => {
+    play.src = "/svgs/play.svg";
+  });
 
-  return ConstrolsBox;
+  /* -------------métodos---------------------------------------- */
+  function playAudio() {
+    audio.play().then(() => (play.src = "/svgs/pause.svg"));
+  }
+
+  /* -------------pusheando etiquetas al Componente------------- */
+  ControlsBox.appendChild(fragment);
+
+  return { ControlsBox, playAudio };
 };
