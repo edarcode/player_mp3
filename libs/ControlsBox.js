@@ -21,9 +21,21 @@ export const createControlsBox = async ({
   const span = createSpan({ content: artist });
   const div = createDiv({ className: "controls__play" });
   const header = createHeader({ className: "controls__header" });
-  const back = createImg({ img: "/svgs/back.svg", id: "back" });
-  const next = createImg({ img: "/svgs/next.svg", id: "next" });
-  const play = createImg({ img: "/svgs/play.svg", id: "play" });
+  const back = createImg({
+    img: "/svgs/back.svg",
+    id: "back",
+    className: "controls__controls",
+  });
+  const next = createImg({
+    img: "/svgs/next.svg",
+    id: "next",
+    className: "controls__controls",
+  });
+  const play = createImg({
+    img: "/svgs/play.svg",
+    id: "play",
+    className: "controls__controls",
+  });
   const audio = await createAudio({ src: disco, id: "audio" });
   const duration = createSpan({
     content: formatSeconds(audio.duration),
