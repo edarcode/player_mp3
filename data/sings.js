@@ -44,22 +44,15 @@ export const sings = [
     image: "imgs/monkey-mix.jpg",
   },
   {
-    title: "Monkey Island Theme",
-    artist: "Michael Land",
-    audio:
-      "https://scummbar.com/mi2/MI1-CD/01%20-%20Opening%20Themes%20-%20Introduction.mp3",
-    image: "imgs/monkey.jpg",
+    title: "More Than Words",
+    artist: "Extreme",
+    audio: "/music/more_than_words.mp3",
+    image: "imgs/more_than_words.png",
   },
   {
-    title: "The SCUMM Bar",
-    artist: "Michael Land",
-    audio: "https://scummbar.com/mi2/MI1-CD/03%20-%20The%20Scumm%20Bar.mp3",
+    title: "More Than You Know",
+    artist: "❓",
+    audio: "/music/more_than_you_know.mp3",
     image: "imgs/scummbar.jpg",
-  },
-  {
-    title: "LeChuck's Theme",
-    artist: "Michael Land",
-    audio: "https://scummbar.com/mi2/MI1-CD/04%20-%20LeChuck's%20Theme.mp3",
-    image: "imgs/lechuck.jpg",
   },
 ];
