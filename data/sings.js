@@ -55,4 +55,10 @@ export const sings = [
     audio: "/music/more_than_you_know.mp3",
     image: "imgs/scummbar.jpg",
   },
+  {
+    title: "Demons",
+    artist: "Imagine Dragons",
+    audio: "/music/demons.mp3",
+    image: "imgs/lechuck.jpg",
+  },
 ];
