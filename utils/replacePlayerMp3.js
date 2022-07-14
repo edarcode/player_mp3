@@ -12,5 +12,5 @@ export const replacePlayerMp3 = async (status) => {
   app.replaceChild(PlayList, oldPlayList);
 
   const audio = app.querySelector("#audio");
-  audio.play().then(() => (play.src = "/svgs/pause.svg"));
+  audio.play();
 };

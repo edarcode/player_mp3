@@ -113,6 +113,7 @@ export const createControlsBox = async ({
 
   audio.addEventListener("play", () => {
     gif.style.opacity = 0.3;
+    play.src = "/svgs/pause.svg";
   });
 
   audio.addEventListener("pause", () => {
