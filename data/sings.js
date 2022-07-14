@@ -1,5 +1,11 @@
 export const sings = [
   {
+    title: "El Tiempo Pasa",
+    artist: "Farruko",
+    audio: "/music/time_goes_by.mp3",
+    image: "imgs/farruko.jpg",
+  },
+  {
     title: "Monkey Island Theme",
     artist: "Michael Land",
     audio:
