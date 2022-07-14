@@ -98,8 +98,8 @@ export const createControlsBox = async ({
     }
   });
 
-  audio.addEventListener("ended", () => {
-    play.src = "/svgs/play.svg";
+  audio.addEventListener("ended", async () => {
+    await handleNext();
   });
 
   audio.addEventListener("timeupdate", () => {
