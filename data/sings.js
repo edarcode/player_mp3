@@ -6,6 +6,36 @@ export const sings = [
     image: "imgs/farruko.jpg",
   },
   {
+    title: "Black in Black",
+    artist: "AC/DC",
+    audio: "/music/black_in_black.mp3",
+    image: "imgs/black_in_black.jpg",
+  },
+  {
+    title: "Stay",
+    artist: "Justin Bieber",
+    audio: "/music/stay.mp3",
+    image: "imgs/stay.png",
+  },
+  {
+    title: "Tom's Diner (Cover)",
+    artist: "AnnenMayKantereit / Giant Rooks",
+    audio: "/music/toms_diner_cover.mp3",
+    image: "imgs/annenMayKantereit_giant.jpg",
+  },
+  {
+    title: "No quiero Llorar (Cover)",
+    artist: "Maikel Delacalle",
+    audio: "/music/no_quiero_llorar_cover.mp3",
+    image: "imgs/maikel_delacalle.jpg",
+  },
+  {
+    title: "Love Nwantiti (Lyrics)",
+    artist: "Ckay",
+    audio: "/music/love_nwantiti_lyrics.mp3",
+    image: "imgs/ckay.jfif",
+  },
+  {
     title: "Monkey Island Theme",
     artist: "Michael Land",
     audio:
