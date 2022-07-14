@@ -25,14 +25,13 @@ state.setIsCollapseMenu = () => {
   state.isCollapseMenu = !state.isCollapseMenu;
 };
 
-const startTheParty = async () => createPlayerMp3(state); /* 😎 */
-const PlayerMp3 = await startTheParty();
+createPlayerMp3(state).then((PlayerMp3) => {
+  const PlayList = createPlayList(state);
 
-const PlayList = createPlayList(state);
+  const fragment = document.createDocumentFragment();
+  fragment.appendChild(PlayerMp3);
+  fragment.appendChild(PlayList);
 
-const fragment = document.createDocumentFragment();
-fragment.appendChild(PlayerMp3);
-fragment.appendChild(PlayList);
-
-app.appendChild(fragment);
-app.classList.add("app");
+  app.appendChild(fragment);
+  app.classList.add("app");
+});
