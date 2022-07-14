@@ -5,6 +5,9 @@
 }
 .player__picture {
   caret-color: transparent;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
 }
 .player__menu {
   position: absolute;

@@ -2,6 +2,9 @@
   "name": "player_mp3",
   "private": true,
   "version": "0.0.0",
+  "build": {
+    "target": "es2018"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

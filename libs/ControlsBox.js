@@ -3,6 +3,7 @@ import { createDiv } from "../utils/createDiv";
 import { createHeader } from "../utils/createHeader";
 import { createImg } from "../utils/createImg";
 import { createP } from "../utils/createP";
+import { createRange } from "../utils/createRange";
 import { createSpan } from "../utils/createSpan";
 import { formatSeconds } from "../utils/formatSeconds";
 
@@ -45,6 +46,15 @@ export const createControlsBox = async ({
     content: formatSeconds(audio.currentTime),
     className: "controls__current-time",
   });
+  const videoBar = createRange({
+    className: "controls__video-bar",
+    max: audio.duration,
+  });
+  const fakeVideoBar = createSpan({ className: "controls__video-bar-fake" });
+  const gif = createImg({
+    img: "/gifs/music-artic.gif",
+    className: "controls__gif",
+  });
 
   /* Fragmentando etiquetas--------------------------------------------- */
   const fragmentHeader = document.createDocumentFragment();
@@ -66,6 +76,9 @@ export const createControlsBox = async ({
   fragment.appendChild(div);
   fragment.appendChild(duration);
   fragment.appendChild(currentTime);
+  fragment.appendChild(videoBar);
+  fragment.appendChild(fakeVideoBar);
+  fragment.appendChild(gif);
 
   /* Listener -------------- Listener ---------------- Listener*/
   back.addEventListener("click", async () => {
@@ -90,7 +103,26 @@ export const createControlsBox = async ({
   });
 
   audio.addEventListener("timeupdate", () => {
-    currentTime.textContent = formatSeconds(audio.currentTime);
+    const currentAudio = audio.currentTime;
+    currentTime.textContent = formatSeconds(currentAudio);
+
+    const endAudio = audio.duration;
+    const currentPercentage = `${(currentAudio / endAudio) * 100}%`;
+    fakeVideoBar.style.width = currentPercentage;
+  });
+
+  audio.addEventListener("play", () => {
+    gif.style.opacity = 0.3;
+  });
+
+  audio.addEventListener("pause", () => {
+    gif.style.opacity = 0;
+  });
+
+  videoBar.addEventListener("change", () => {
+    const valueVideoBar = videoBar.value;
+    audio.currentTime = valueVideoBar;
+    audio.play();
   });
 
   /* -------------pusheando etiquetas al Componente------------- */
