@@ -7,17 +7,24 @@
   transform: scale(0) rotate(-150deg);
   transition: transform 0.4s ease;
   align-self: flex-start;
+  position: absolute;
+  top: 75px;
 }
 .list--collapse {
-  position: relative;
   transform: scale(1);
+}
+@media screen and (min-width: 768px) {
+  .list--collapse {
+    position: relative;
+    top: initial;
+  }
 }
 
 .list__name-song {
   list-style: none;
   cursor: pointer;
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 768px) {
   .list {
     margin-top: 35px;
   }
