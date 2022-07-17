@@ -53,7 +53,8 @@ export const sings = [
     artist: "Michael Land",
     audio:
       "https://scummbar.com/mi2/MI1-CD/26%20-%20Monkey%20Island%20-%20Rock%20Remix%202.mp3",
-    image: "imgs/monkey-mix.jpg",
+    image:
+      "https://res.cloudinary.com/dvmsllkkg/image/upload/v1658080216/apps/monkey-mix_dhdizt.webp",
   },
   {
     title: "More Than Words",
