@@ -13,3 +13,6 @@
 .list--collapse {
   transform: scale(1);
 }
+.list__name-song {
+  cursor: pointer;
+}
