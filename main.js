@@ -1,5 +1,4 @@
 import { createPlayerMp3 } from "./libs/PlayerMp3";
-import { createPlayList } from "./libs/PlayList";
 
 const app = document.querySelector("#app");
 
@@ -26,12 +25,6 @@ state.setIsCollapseMenu = () => {
 };
 
 createPlayerMp3(state).then((PlayerMp3) => {
-  const PlayList = createPlayList(state);
-
-  const fragment = document.createDocumentFragment();
-  fragment.appendChild(PlayerMp3);
-  fragment.appendChild(PlayList);
-
-  app.appendChild(fragment);
+  app.appendChild(PlayerMp3);
   app.classList.add("app");
 });

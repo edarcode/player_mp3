@@ -3,6 +3,7 @@ import { createImg } from "../utils/createImg";
 import { replacePlayerMp3 } from "../utils/replacePlayerMp3";
 import { createArtBox } from "./ArtBox";
 import { createControlsBox } from "./ControlsBox";
+import { createPlayList } from "./PlayList.js";
 
 export const createPlayerMp3 = async (state) => {
   const PlayerMp3 = document.createElement("article");
@@ -39,11 +40,13 @@ export const createPlayerMp3 = async (state) => {
     handleNext,
   });
   const menu = createImg({ img: "/svgs/menu.svg", className: "player__menu" });
-
+  const PlayList = createPlayList(state);
   const fragment = document.createDocumentFragment();
+
   fragment.appendChild(ArtBox);
   fragment.appendChild(ControlsBox);
   fragment.appendChild(menu);
+  fragment.appendChild(PlayList);
 
   PlayerMp3.appendChild(fragment);
 
